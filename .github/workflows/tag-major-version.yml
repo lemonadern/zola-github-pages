@@ -1,0 +1,27 @@
+name: Update Major Version Tag
+
+# リリースが publish されたとき、メジャータグ (e.g. v0) を最新コミットに移動する。
+# これにより users が `uses: lemonadern/zola-github-pages@v0` と書いたとき
+# 常に最新の v0.x.y を参照できる。
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  update-major-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Move major version tag
+        run: |
+          set -euo pipefail
+          TAG="${{ github.ref_name }}"           # e.g. v0.2.1
+          MAJOR="${TAG%%.*}"                      # e.g. v0
+          echo "Moving tag $MAJOR -> $TAG"
+          git tag -f "$MAJOR"
+          git push origin "$MAJOR" --force
