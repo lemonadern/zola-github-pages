@@ -19,3 +19,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+      # リリースが作成されたとき、メジャータグ (e.g. v0) を最新コミットに移動する。
+      # GITHUB_TOKEN で作成したリリースは release イベントを発火しないため、
+      # tag-major-version.yml とは別にここで処理する。
+      - uses: actions/checkout@v6.0.2
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Move major version tag
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.release.outputs.tag_name }}"   # e.g. v0.2.1
+          MAJOR="${TAG%%.*}"                             # e.g. v0
+          echo "Moving tag $MAJOR -> $TAG"
+          git tag -f "$MAJOR"
+          git push origin "$MAJOR" --force
