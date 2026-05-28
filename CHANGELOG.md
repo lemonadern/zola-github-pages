@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.0](https://github.com/lemonadern/zola-github-pages/compare/v0.2.0...v1.0.0) (2026-05-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* release v1.0.0
+
+### Features
+
+* release v1.0.0 ([e89cc0f](https://github.com/lemonadern/zola-github-pages/commit/e89cc0f390d8daaa1eb09ee91f6e8ca0959bf50c))
+
+
+### Miscellaneous
+
+* set release-as 1.0.0 ([6875c39](https://github.com/lemonadern/zola-github-pages/commit/6875c390ab49c2a19de3443966789ebe33a7ef18))
+
 ## [0.2.0](https://github.com/lemonadern/zola-github-pages/compare/v0.1.1...v0.2.0) (2026-05-28)
 
 
