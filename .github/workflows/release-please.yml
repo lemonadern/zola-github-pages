@@ -20,9 +20,9 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      # リリースが作成されたとき、メジャータグ (e.g. v0) を最新コミットに移動する。
-      # GITHUB_TOKEN で作成したリリースは release イベントを発火しないため、
-      # tag-major-version.yml とは別にここで処理する。
+      # When a release is created, move the major version tag (e.g. v0) to the latest commit.
+      # Releases created via GITHUB_TOKEN do not trigger the release event,
+      # so this is handled here instead of a separate workflow.
       - uses: actions/checkout@v6.0.2
         if: ${{ steps.release.outputs.release_created }}
 
