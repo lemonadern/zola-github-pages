@@ -39,7 +39,7 @@ jobs:
           submodules: recursive # required if your theme is managed as a submodule
 
       - name: Build Zola + upload Pages artifact
-        uses: lemonadern/zola-github-pages@v0
+        uses: lemonadern/zola-github-pages@ec083855bf870ef6d3c0c8b2e8a26a1e0c79f2ae # v1.0.0
         with:
           zola_version: v0.22.1
 
