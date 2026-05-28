@@ -35,6 +35,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v6.0.2
+        with:
+          submodules: recursive # required if your theme is managed as a submodule
 
       - name: Build Zola + upload Pages artifact
         uses: lemonadern/zola-github-pages@v0
