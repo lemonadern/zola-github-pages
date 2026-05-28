@@ -30,8 +30,8 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         run: |
           set -euo pipefail
-          TAG="${{ steps.release.outputs.tag_name }}"   # e.g. v0.2.1
-          MAJOR="${TAG%%.*}"                             # e.g. v0
+          TAG="${{ steps.release.outputs.tag_name }}"
+          MAJOR="${TAG%%.*}"
           echo "Moving tag $MAJOR -> $TAG"
           git tag -f "$MAJOR"
           git push origin "$MAJOR" --force
